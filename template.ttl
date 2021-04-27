@@ -1,0 +1,86 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix ex: <http://www.example.org/> .
+#@prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix sdmx-measure: <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+ex:refPeriodDim a rdf:Property, qb:DimensionProperty ;
+    rdfs:label "Year"@en, "Rok"@cz ;
+    rdfs:subPropertyOf sdmx-dimension:refPeriod;
+    rdfs:range dcterms:date ;
+    qb:concept sdmx-concept:refPeriod .
+
+ex:refAreaDim a rdf:Property, qb:DimensionProperty ;
+    rdfs:label "County"@en, "Okres"@cz ;
+    rdfs:subPropertyOf sdmx-dimension:refArea ;
+    rdfs:range ex:county ;
+    qb:concept sdmx-concept:refArea .
+
+ex:inhabitantsMsr  a rdf:Property, qb:MeasureProperty;
+    rdfs:label "number of inhabitants"@en, "počet obyvatel"@cz;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:integer .
+
+ex:inhabitantsDim  a rdf:Property, qb:DimensionProperty ;
+    rdfs:label "number of inhabitants"@en, "počet obyvatel"@cz;
+    rdfs:range ex:InhabitantsConceptScheme .
+
+ex:providersMsr a rdf:Property, qb:MeasureProperty ;
+    rdfs:label "number of healthcare providers"@en;
+    rdfs:range ex:InhabitantsConceptScheme .
+
+ex:healthcareFormDim a rdf:Property, qb:DimensionProperty ;
+    rdfs:label "form of provided healthcare"@cz ;
+    rdfs:range ex:FormConceptScheme .
+
+ex:InhabitantsConceptScheme a skos:ConceptScheme .
+
+ex:inhabitantsConcept0 a skos:Concept ;
+    rdfs:label "less than 50 000 inhabitants" ;
+    skos:inScheme ex:InhabitantsConceptScheme .
+
+ex:inhabitantsConcept1 a skos:Concept ;
+    rdfs:label "50 000 - 99 999 inhabitants" ;
+    skos:inScheme ex:InhabitantsConceptScheme .
+
+ex:inhabitantsConcept2 a skos:Concept ;
+    rdfs:label "100 000 - 149 999 inhabitants" ;
+    skos:inScheme ex:InhabitantsConceptScheme .
+
+ex:inhabitantsConcept3 a skos:Concept ;
+    rdfs:label "more than 150 000 inhabitants" ;
+    skos:inScheme ex:InhabitantsConceptScheme .
+
+ex:inhabitantsDSD a rdf:Property, qb:DataStructureDefinition ;
+    qb:component
+        qb:dimension ex:refAreaDim ,
+        qb:dimension ex:refPeriodDim ,
+        qb:measure ex:inhabitantsMsr .
+
+ex:healthcareDSD a rdf:Property, qb:DataStructureDefinition ;
+    qb:component
+        qb:dimension ex:refAreaDim ,
+        qb:dimension ex:refPeriodDim ,
+        qb:dimension ex:inhabitantsDim ,
+        qb:dimenstion ex:healthcareFormDim ,
+        qb:measure ex:ex:providersMsr .
+
+ex:dataCubeInhabitants a qb:DataSet ;
+    rdfs:label "Dataset"@en ;
+    qb:structure ex:inhabitantsDSD ;
+    dcterms:publisher "kuzelikj"^^xsd:string .
+
+ex:dataCubeHealthcare a qb:DataSet ;
+    rdfs:label "Dataset"@en ;
+    qb:structure ex:healthcareDSD ;
+    dcterms:publisher "kuzelikj"^^xsd:string .
+
+ex:FormConceptScheme a skos:ConceptScheme .
+
+

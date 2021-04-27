@@ -68,10 +68,10 @@ def make_hc_cube(input_dict, known_forms):
             okres = observation['okres']
             year = observation['rok']
             inhabitants = observation['stredni_stav_obyvatel']
-            for hc_form in observation['pocty_dle_formy_pece']:
-                form = f'ex:FormConcept{known_forms.index(hc_form)}'
+            for form_it, hc_form in enumerate(observation['pocty_dle_formy_pece']):
+                form = f'ex:formConcept{known_forms.index(hc_form)}'
                 form_providers = observation['pocty_dle_formy_pece'][hc_form]
-                obs_string = f'ex:observation{obs_it} a qb:Observation ;\n' \
+                obs_string = f'ex:observation{obs_it}_{form_it} a qb:Observation ;\n' \
                              '\tqb:dataSet ex:dataCubeHealthcare ;\n' \
                              f'\tex:refPeriodDim "{year}"^^xsd:date ;\n' \
                              f'\tex:refAreaDim "{okres}" ;\n' \

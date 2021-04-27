@@ -3,14 +3,14 @@ import json
 import glob
 
 # https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2Fhttps---opendata.mzcr.cz-api-3-action-package_show-id-nrpzs
-HEALTHCARE_FILE = 'narodni-registr-poskytovatelu-zdravotnich-sluzeb.csv'
+HEALTHCARE_FILE = 'data/narodni-registr-poskytovatelu-zdravotnich-sluzeb.csv'
 
 # https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2Fhttp---vdb.czso.cz-pll-eweb-package_show-id-130141r20
 # https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2Fhttp---vdb.czso.cz-pll-eweb-package_show-id-130141r19
-population_files = glob.glob('./130141-??data20??.csv')
+population_files = glob.glob('./data/130141-??data20??.csv')
 
 # https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2Fhttp---vdb.czso.cz-pll-eweb-package_show-id-cis101
-OKRES_FILE = 'CIS0101_CS.csv'
+OKRES_FILE = 'data/CIS0101_CS.csv'
 
 OUTPUT_FILE = 'out.json'
 

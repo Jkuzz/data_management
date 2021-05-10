@@ -1,0 +1,72 @@
+@prefix ex: <http://www.example.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+<https://github.com/petrskoda> a foaf:Document .
+
+<https://github.com/Jkuzz> a foaf:Document .
+
+ex:petrskoda a prov:Agent ;
+    foaf:givenName "Petr"^^xsd:string ;
+    foaf:familyName "Škoda"^^xsd:string ;
+    foaf:homepage <https://github.com/petrskoda> .
+
+ex:jkuzz a prov:Agent, prov:Person ;
+    foaf:givenName "Jan"^^xsd:string ;
+    foaf:familynName "Kuželík"^^xsd:string ;
+    prov:actedOnBehalfOf ex:petrskoda ;
+    foaf:homepage <https://github.com/Jkuzz> .
+
+ex:population2018 a prov:Entity ;
+    rdfs:seeAlso <https://data.gov.cz/describe/?url=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2Fhttp---vdb.czso.cz-pll-eweb-package_show-id-130141r19%2Fdistribuce%2F0c0dd07a0934969bd13aefc92fb52d61> .
+
+ex:population2019 a prov:Entity ;
+    rdfs:seeAlso <https://data.gov.cz/describe/?url=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2Fhttp---vdb.czso.cz-pll-eweb-package_show-id-130141r20%2Fdistribuce%2Fa26b1e2a390ba52b8a70934d8ddc2df6> .
+
+ex:healthcare2019 a prov:Entity ;
+    rdfs:seeAlso <https://data.gov.cz/describe/?url=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2Fhttps---opendata.mzcr.cz-api-3-action-package_show-id-nrpzs> .
+
+ex:okresy a prov:Entity ;
+    rdfs:seeAlso <https://data.gov.cz/describe/?url=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2Fhttp---vdb.czso.cz-pll-eweb-package_show-id-cis101%2Fdistribuce%2F887a0a9abc2e7d22774fc2698a2abde7> .
+
+ex:loadedData a prov:Entity ;
+    prov:wasDerivedFrom ex:population2018 ;
+    prov:wasDerivedFrom ex:population2019 ;
+    prov:wasDerivedFrom ex:healthcare2019 ;
+    prov:wasDerivedFrom ex:okresy ;
+    dct:title "Data cube of inhabitants per okres"@en .
+
+ex:dataCube a prov:Entity ;
+    prov:wasDerivedFrom ex:loadedData ;
+    dct:title "Data cube of healthcare providers as per homework 2"@en .
+
+ex:loader a prov:SoftwareAgent ;
+    foaf:homepage <https://github.com/Jkuzz/data_management> ;
+    prov:actedOnBehalfOf ex:jkuzz .
+
+ex:cuber a prov:SoftwareAgent ;
+    foaf:homepage <https://github.com/Jkuzz/data_management> ;
+    prov:actedOnBehalfOf ex:jkuzz .
+
+ex:loadProcess a prov:Activity ;
+    prov:used ex:population2018 ;
+    prov:used ex:population2019 ;
+    prov:used ex:healthcare2019 ;
+    prov:used ex:okresy ;
+    prov:wasAssociatedWith ex:loader .
+
+ex:cubeProcess a prov:activity ;
+    prov:used ex:loadedData ;
+    prov:wasAssociatedWith ex:cuber .
+
+ex:loadedData prov:wasGeneratedBy ex:loadProcess .
+
+ex:loadedData prov:generatedAtTime "2012-03-02T10:30:00"^^xsd:dateTime .
+
+ex:dataCube prov:wasGeneratedBy ex:cubeProcess .
+
+ex:dataCube prov:generatedAtTime "2012-03-02T10:30:00"^^xsd:dateTime .
+

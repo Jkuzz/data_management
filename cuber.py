@@ -5,6 +5,7 @@ from shutil import copyfile
 INPUT_FILE = 'loaded_data.json'  # This name is given to the loader module
 TEMPLATE_FILE = 'template.ttl'
 OUTPUT_FILE = 'out.ttl'
+PROV_FILE = 'prov.ttl'
 
 
 def prepare_cubes(input_dict):
@@ -95,7 +96,7 @@ def make_cubes():
 
 if __name__ == '__main__':
     print('Running cuber pipeline...')
-    loader.load(INPUT_FILE)
+    loader.load(INPUT_FILE, PROV_FILE)
     print('Loading finished.\nCreating data cube...')
     make_cubes()
     print('Creation of data cubes finished.')

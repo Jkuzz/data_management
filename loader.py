@@ -1,6 +1,8 @@
 import csv
 import json
 import glob
+import re
+import time
 
 # https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2Fhttps---opendata.mzcr.cz-api-3-action-package_show-id-nrpzs
 HEALTHCARE_FILE = 'data/narodni-registr-poskytovatelu-zdravotnich-sluzeb.csv'
@@ -13,9 +15,10 @@ population_files = glob.glob('./data/130141-??data20??.csv')
 OKRES_FILE = 'data/CIS0101_CS.csv'
 
 OUTPUT_FILE = 'out.json'
+PROV_FILE = 'prov.ttl'
 
 
-def load(output_filename):
+def load(output_filename, prov_filename):
     """Reads input data files and creates a single data file."""
     out_dict = {}
     okres_dict = {}
@@ -72,7 +75,11 @@ def load(output_filename):
         root_dict = {'data': list(out_dict.values())}
         json.dump(root_dict, out_file, indent=4, ensure_ascii=False)
 
+    # with open(prov_filename, 'w+', encoding='utf-8') as prov_file:
+    #     print(time.localtime())
+    #     pass
+
 
 if __name__ == '__main__':
     print('Running standalone loader')
-    load(OUTPUT_FILE)
+    load(OUTPUT_FILE, PROV_FILE)

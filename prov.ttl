@@ -64,9 +64,9 @@ ex:cubeProcess a prov:activity ;
 
 ex:loadedData prov:wasGeneratedBy ex:loadProcess .
 
-ex:loadedData prov:generatedAtTime "2012-03-02T10:30:00"^^xsd:dateTime .
+ex:loadedData prov:generatedAtTime "2021-05-10T16:52:30"^^xsd:dateTime .
 
 ex:dataCube prov:wasGeneratedBy ex:cubeProcess .
 
-ex:dataCube prov:generatedAtTime "2012-03-02T10:30:00"^^xsd:dateTime .
+ex:loadedData prov:generatedAtTime "2021-05-10T16:52:30"^^xsd:dateTime .
 

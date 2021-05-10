@@ -1,6 +1,7 @@
 import loader
 import json
 from shutil import copyfile
+import prov
 
 INPUT_FILE = 'loaded_data.json'  # This name is given to the loader module
 TEMPLATE_FILE = 'template.ttl'
@@ -82,7 +83,7 @@ def make_hc_cube(input_dict, known_forms):
                 out_file.write(obs_string)
 
 
-def make_cubes():
+def make_cubes(prov_filename):
     """Creates data cubes as per HW2 from data loaded by HW1"""
     with open(INPUT_FILE, 'r', encoding='utf-8') as in_file:
         input_dict = json.load(in_file)['data']
@@ -92,11 +93,12 @@ def make_cubes():
     print('Population data cube created.')
     make_hc_cube(input_dict, known_forms)
     print('Healthcare providers data cube created.')
+    prov.update_gen_time(prov_filename, "ex:dataCube")
 
 
 if __name__ == '__main__':
     print('Running cuber pipeline...')
     loader.load(INPUT_FILE, PROV_FILE)
     print('Loading finished.\nCreating data cube...')
-    make_cubes()
+    make_cubes(PROV_FILE)
     print('Creation of data cubes finished.')

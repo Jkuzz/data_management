@@ -11,7 +11,7 @@ def update_gen_time(prov_filename, entity_name):
         for line in prov_lines:
             line = re.sub(
                 f"{entity_name} prov:generatedAtTime \".+\"\^\^xsd:dateTime .",
-                f"ex:loadedData prov:generatedAtTime \"{current_time}\"^^xsd:dateTime .",
+                f"{entity_name} prov:generatedAtTime \"{current_time}\"^^xsd:dateTime .",
                 line
             )
             prov_file.write(line)

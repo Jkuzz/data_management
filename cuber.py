@@ -42,7 +42,7 @@ def make_pop_cube(input_dict):
             inhabitants = pop_observation['stredni_stav_obyvatel']
             obs_string = f'ex:observation{obs_it} a qb:Observation ;\n' \
                          '\tqb:dataSet ex:dataCubeInhabitants ;\n' \
-                         f'\tex:refPeriodDim "{year}"^^xsd:date ;\n' \
+                         f'\tex:refPeriodDim "{year}" ;\n' \
                          f'\tex:refAreaDim "{okres}" ;\n' \
                          f'\tex:inhabitantsMsr "{inhabitants}"^^xsd:integer .\n\n'
             out_file.write(obs_string)
@@ -75,7 +75,7 @@ def make_hc_cube(input_dict, known_forms):
                 form_providers = observation['pocty_dle_formy_pece'][hc_form]
                 obs_string = f'ex:observation{obs_it}_{form_it} a qb:Observation ;\n' \
                              '\tqb:dataSet ex:dataCubeHealthcare ;\n' \
-                             f'\tex:refPeriodDim "{year}"^^xsd:date ;\n' \
+                             f'\tex:refPeriodDim "{year}" ;\n' \
                              f'\tex:refAreaDim "{okres}" ;\n' \
                              f'\tex:inhabitantsDim "{get_inhabitants_concept(inhabitants)}" ;\n' \
                              f'\tex:healthcareFormDim {form} ;\n' \

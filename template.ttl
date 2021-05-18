@@ -59,17 +59,17 @@ ex:inhabitantsConcept3 a skos:Concept ;
 
 ex:inhabitantsDSD a rdf:Property, qb:DataStructureDefinition ;
     qb:component
-        qb:dimension ex:refAreaDim ,
-        qb:dimension ex:refPeriodDim ,
-        qb:measure ex:inhabitantsMsr .
+		[qb:dimension ex:refAreaDim; ] ,
+        [qb:dimension ex:refPeriodDim; ],
+        [qb:measure ex:inhabitantsMsr; ].
 
 ex:healthcareDSD a rdf:Property, qb:DataStructureDefinition ;
     qb:component
-        qb:dimension ex:refAreaDim ,
-        qb:dimension ex:refPeriodDim ,
-        qb:dimension ex:inhabitantsDim ,
-        qb:dimenstion ex:healthcareFormDim ,
-        qb:measure ex:ex:providersMsr .
+        [qb:dimension ex:refAreaDim; ],
+        [qb:dimension ex:refPeriodDim; ],
+        [qb:dimension ex:inhabitantsDim; ],
+        [qb:dimenstion ex:healthcareFormDim; ],
+        [qb:measure ex:ex:providersMsr; ].
 
 ex:dataCubeInhabitants a qb:DataSet ;
     rdfs:label "Dataset"@en ;

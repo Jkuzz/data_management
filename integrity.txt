@@ -1,0 +1,21 @@
+IC-1 - False - OK
+IC-2 - False - OK
+IC-3 - False - OK after transform
+IC-4 - False - OK after transform
+IC-5 - False - Ranges are skos:ConceptScheme
+IC-6 - False - Optional components not used
+IC-7 - False - No slice keys
+IC-8 - False - No slice keys
+IC-9 - False - No slices
+IC-10 - False - No slices
+IC-11 - False - OK
+IC-12 - False - OK
+IC-13 - False - OK
+IC-14 - False - OK
+IC-15 - False - OK
+IC-16 - False - OK
+IC-17 - False - OK
+IC-18 - False - No slices
+IC-19 - False - No codelists
+IC-20 - False - No hierarchies
+IC-21 - False - No hierarchies

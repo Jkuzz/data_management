@@ -68,8 +68,8 @@ ex:healthcareDSD a rdf:Property, qb:DataStructureDefinition ;
         [qb:dimension ex:refAreaDim; ],
         [qb:dimension ex:refPeriodDim; ],
         [qb:dimension ex:inhabitantsDim; ],
-        [qb:dimenstion ex:healthcareFormDim; ],
-        [qb:measure ex:ex:providersMsr; ].
+        [qb:dimension ex:healthcareFormDim; ],
+        [qb:measure ex:providersMsr; ].
 
 ex:dataCubeInhabitants a qb:DataSet ;
     rdfs:label "Dataset"@en ;
